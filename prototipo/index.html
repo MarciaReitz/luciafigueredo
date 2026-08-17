@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lúcia Figuerêdo · Autora & Mentora</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marfim:#F7F3EB;
+    --salvia:#A8B89A;
+    --dourado:#C6A15B;
+    --dourado-vivo:#D4A83E;
+    --terra:#8C6A52;
+    --musgo:#5E6E57;
+    --rose:#D8B7B2;
+    --texto:#2E2B26;
+    --radius:26px;
+    --ease:cubic-bezier(.2,0,0,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Mulish',sans-serif;background:var(--marfim);color:var(--texto);line-height:1.65;overflow-x:hidden;}
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .5s var(--ease), transform .5s var(--ease);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(247,243,235,0.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(140,106,82,0.15);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1180px;margin:0 auto;}
+  .brand{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--musgo);letter-spacing:0.5px;}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:600;}
+  .navlinks a{opacity:0.8;transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;color:var(--dourado);}
+
+  /* ---------- buttons & badges ---------- */
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:8px 8px 8px 24px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.2px;transition:transform .18s var(--ease), box-shadow .18s var(--ease);}
+  .btn:hover{transform:scale(1.03);}
+  .btn .arrow{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .btn-primary{background:var(--musgo);color:var(--marfim);}
+  .btn-primary .arrow{background:var(--dourado);color:#fff;}
+  .btn-primary:hover{box-shadow:0 10px 24px -8px rgba(94,110,87,0.5);}
+  .btn-outline{background:transparent;color:var(--musgo);border:1.5px solid var(--musgo);padding:7px 7px 7px 22px;}
+  .btn-outline .arrow{background:var(--musgo);color:var(--marfim);}
+  .btn-outline:hover{background:var(--musgo);color:var(--marfim);}
+  .btn-outline:hover .arrow{background:var(--dourado);color:#fff;}
+  .btnrow{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(198,161,91,0.14);color:var(--terra);border:1px solid rgba(198,161,91,0.4);padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;}
+
+  /* ---------- bento grid ---------- */
+  section{padding:60px 24px;}
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;max-width:1180px;margin:0 auto;}
+  .card{border-radius:var(--radius);padding:34px;overflow:hidden;position:relative;}
+  .card-dark{background:var(--musgo);color:var(--marfim);}
+  .card-terra{background:var(--terra);color:var(--marfim);}
+  .card-gold{background:var(--dourado-vivo);color:#fff;}
+  .card-rose{background:var(--rose);color:#4a2f2b;}
+  .card-light{background:#fff;color:var(--texto);box-shadow:0 10px 30px -18px rgba(46,43,38,0.25);}
+  .card-photo{padding:0;}
+  .card-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .card .eyebrow{font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px;margin-bottom:12px;opacity:.85;}
+  .card h2, .card h3{margin-bottom:14px;line-height:1.2;}
+  .card p{opacity:.92;font-size:15.5px;}
+  .g-3{grid-column:span 3;} .g-4{grid-column:span 4;} .g-5{grid-column:span 5;} .g-6{grid-column:span 6;}
+  .g-7{grid-column:span 7;} .g-8{grid-column:span 8;} .g-12{grid-column:span 12;}
+
+  .section-title{text-align:center;margin-bottom:14px;max-width:1180px;margin-left:auto;margin-right:auto;padding:0 24px;}
+  .section-title .badge{margin-bottom:14px;}
+  .section-title h2{font-size:32px;color:var(--musgo);}
+  .section-sub{text-align:center;max-width:600px;margin:0 auto 44px;color:#5c574d;font-size:16px;}
+
+  blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:21px;border-left:3px solid var(--dourado);padding-left:20px;margin:20px 0;}
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:44px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:44px;align-items:center;max-width:1180px;margin:0 auto;padding:0 24px 30px;}
+  .logo-lockup{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
+  .logo-lockup .brand-mini{font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:var(--musgo);}
+  .logo-lockup .sep{color:var(--dourado);}
+  .logo-lockup svg{width:26px;height:26px;}
+  .hero h1{font-size:44px;color:var(--musgo);line-height:1.15;margin:14px 0 18px;}
+  .hero .lede{font-size:18px;color:#4a453d;margin-bottom:30px;max-width:480px;}
+  .hero-collage{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:500px;}
+  .hero-collage .tile{border-radius:22px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(46,43,38,0.3);position:relative;}
+  .hero-collage .tile-tall{grid-row:1/3;}
+  .hero-collage .tile img{width:100%;height:100%;object-fit:cover;}
+  .tile-overlay{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top, rgba(46,43,38,0.75), transparent);}
+  .tile-overlay span{color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:15px;opacity:0;transition:opacity .4s var(--ease);}
+  .tile-overlay span.show{opacity:1;}
+
+  /* ---------- sobre / comunidade ---------- */
+  .sobre .card-dark blockquote{border-color:var(--dourado);color:var(--marfim);}
+  .sobre .card-photo{min-height:340px;}
+
+  /* ---------- metodologia (marquee) ---------- */
+  .marquee-wrap{position:relative;height:320px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);mask-image:linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);}
+  .marquee-track{position:absolute;top:0;left:0;width:100%;animation:marqueeUp 16s linear infinite;}
+  .marquee-track .m-item{display:flex;align-items:center;gap:14px;padding:16px 6px;opacity:.55;}
+  .marquee-track .m-item .m-icon{width:38px;height:38px;border-radius:50%;background:rgba(247,243,235,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:var(--dourado);}
+  .marquee-track .m-item strong{display:block;font-family:'Playfair Display',serif;font-size:16px;color:var(--marfim);}
+  .marquee-track .m-item small{opacity:.8;font-size:12.5px;}
+  @keyframes marqueeUp{from{transform:translateY(0);}to{transform:translateY(-50%);}}
+
+  /* ---------- trajetória (sticky) ---------- */
+  .trajetoria-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;max-width:1180px;margin:0 auto;}
+  .trajetoria-sticky{position:sticky;top:100px;align-self:start;border-radius:24px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(46,43,38,0.3);}
+  .trajetoria-sticky img{width:100%;}
+  .trajetoria-cards .card{margin-bottom:22px;}
+  .trajetoria-cards .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,0.2);}
+
+  /* ---------- livros ---------- */
+  .livro-card{display:flex;flex-direction:column;}
+  .livro-card img{border-radius:18px;height:260px;object-position:top;margin-bottom:20px;}
+  .livro-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,0.5);}
+  .livro-card h3{font-size:22px;color:var(--musgo);}
+  .livro-card p{color:#5c574d;font-size:15px;margin-bottom:22px;flex:1;}
+
+  /* ---------- avaliações ---------- */
+  .review-card{padding:24px 22px;display:flex;flex-direction:column;border-radius:20px;}
+  .stars{color:var(--dourado);font-size:14px;letter-spacing:2px;margin-bottom:10px;}
+  .rating-hero{font-size:20px;letter-spacing:4px;}
+  .review-card h4{font-family:'Playfair Display',serif;font-size:16.5px;color:var(--musgo);margin-bottom:8px;}
+  .review-card p{color:#4a453d;font-size:14px;flex:1;margin-bottom:14px;opacity:1;}
+  .review-meta{font-size:12px;color:#8c8577;display:flex;justify-content:space-between;border-top:1px solid #eee6d8;padding-top:10px;}
+  .review-meta .verified{color:var(--salvia);font-weight:700;}
+  .c1{border-top:4px solid var(--dourado);} .c2{border-top:4px solid var(--salvia);}
+  .c3{border-top:4px solid var(--rose);} .c4{border-top:4px solid var(--terra);}
+
+  /* ---------- mentoria logo ---------- */
+  .mentoria-logo{display:flex;align-items:center;justify-content:center;background:var(--rose);}
+  .mentoria-logo img{border-radius:18px;max-width:260px;box-shadow:0 16px 40px -14px rgba(46,43,38,0.35);}
+  .mentoria ul{list-style:none;margin-top:20px;}
+  .mentoria li{padding:10px 0 10px 28px;position:relative;border-top:1px solid rgba(247,243,235,0.15);}
+  .mentoria li:first-child{border-top:none;}
+  .mentoria li::before{content:"✦";position:absolute;left:0;color:var(--dourado);}
+
+  /* ---------- CTA final / polaroid ---------- */
+  .cta-final{text-align:center;}
+  .polaroid-wrap{position:relative;height:260px;max-width:340px;margin:0 auto 20px;}
+  .polaroid{position:absolute;background:#fff;padding:12px 12px 40px;border-radius:6px;box-shadow:0 20px 40px -14px rgba(46,43,38,0.35);width:200px;}
+  .polaroid img{border-radius:2px;width:100%;height:200px;object-fit:cover;}
+  .polaroid-a{left:10px;top:10px;transform:rotate(-7deg);z-index:1;}
+  .polaroid-b{right:10px;top:40px;transform:rotate(6deg);z-index:2;}
+  .cta-final h2{font-size:30px;color:var(--musgo);margin-bottom:22px;}
+
+  /* ---------- instagram ---------- */
+  .insta-grid{grid-template-rows:repeat(2,140px);}
+  .insta-tile{border-radius:20px;}
+  .i3{background:var(--rose);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--marfim);text-align:center;padding:70px 24px 40px;}
+  .footer-motif{opacity:.8;margin:0 auto 24px;width:120px;}
+  .footer-motif path{stroke-dasharray:120;stroke-dashoffset:120;animation:drawLine 3s var(--ease) infinite alternate;}
+  .footer-motif path:nth-child(1){animation-delay:0s;}
+  .footer-motif path:nth-child(2){animation-delay:.15s;} .footer-motif path:nth-child(3){animation-delay:.15s;}
+  .footer-motif path:nth-child(4){animation-delay:.3s;} .footer-motif path:nth-child(5){animation-delay:.3s;}
+  .footer-motif path:nth-child(6){animation-delay:.45s;} .footer-motif path:nth-child(7){animation-delay:.45s;}
+  @keyframes drawLine{to{stroke-dashoffset:0;}}
+  footer h2{font-size:28px;color:var(--musgo);margin-bottom:18px;}
+  footer p{opacity:.8;max-width:480px;margin:0 auto 26px;color:#5c574d;}
+  .social-icons{display:flex;gap:14px;justify-content:center;margin-top:30px;}
+  .social-icons a{width:40px;height:40px;border-radius:50%;background:var(--musgo);color:var(--marfim);display:flex;align-items:center;justify-content:center;font-size:15px;transition:transform .18s var(--ease);}
+  .social-icons a:hover{transform:scale(1.08);}
+  .foot-copy{margin-top:34px;font-size:12px;opacity:.55;color:var(--terra);}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-collage{order:-1;height:360px;max-width:460px;margin:0 auto;}
+    .bento{grid-template-columns:1fr;}
+    .bento > *{grid-column:span 1 !important;}
+    .navlinks{display:none;}
+    .hero h1{font-size:32px;}
+    .card{padding:26px;}
+    .trajetoria-grid{grid-template-columns:1fr;}
+    .trajetoria-sticky{position:static;margin-bottom:24px;}
+    .polaroid-wrap{transform:scale(.85);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">Lúcia Figuerêdo</div>
+    <div class="navlinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#livros">Livros</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#mentoria">Raízes que Ficam</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="#livros" class="btn btn-outline" style="padding:6px 6px 6px 18px;font-size:13px;"><span>Ver livros</span><span class="arrow">→</span></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="badge">★★★★★ 5,0 na Amazon · 47 avaliações</span>
+      <div class="logo-lockup">
+        <span class="brand-mini">Lúcia Figuerêdo</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.6"><path d="M12 22c0-8 0-14 0-19"/><path d="M12 15c-3-2-5-3-7-6"/><path d="M12 10c3-2 5-3 7-6"/></svg>
+        <span class="sep">·</span>
+        <span class="brand-mini">Raízes que Ficam</span>
+      </div>
+      <h1>Histórias que ensinam, tocam e permanecem.</h1>
+      <p class="lede">Lúcia Figuerêdo escreve a partir da experiência vivida: mais de trinta anos em sala de aula viraram poesia de memória, e uma vida de casamento virou a mentoria Raízes que Ficam.</p>
+      <div class="btnrow">
+        <a href="#livros" class="btn btn-primary"><span>Conhecer os livros</span><span class="arrow">→</span></a>
+        <a href="#mentoria" class="btn btn-outline"><span>Conhecer a mentoria</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="hero-collage">
+      <div class="tile tile-tall"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia Figuerêdo"></div>
+      <div class="tile tile-tall"><img src="assets/hero-livros.png" alt="Lúcia Figuerêdo com seus dois livros"></div>
+      <div class="tile"><img src="assets/livro-professora.jpg" alt="Capa A Professora que Guardava Poemas">
+        <div class="tile-overlay"><span id="heroLabel" class="show">Poesia</span></div>
+      </div>
+      <div class="tile"><img src="assets/bastidor-escrevendo.jpeg" alt="Lúcia escrevendo"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="bento reveal-group" style="margin-bottom:20px;">
+    <div class="card card-dark g-7 reveal">
+      <div class="eyebrow">Sobre a autora</div>
+      <h2 style="font-size:28px;">A professora que virou escritora</h2>
+      <p>Lúcia observou, registrou e transformou em poesia o que viveu: o chão da escola, as pessoas que ficaram, os silêncios e os retornos.</p>
+      <blockquote>"Porque algumas lembranças resistem ao tempo. E, quando a memória encontra a poesia, tornam-se eternas."</blockquote>
+    </div>
+    <div class="card card-photo g-5 reveal">
+      <img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia Figuerêdo">
+    </div>
+  </div>
+  <div class="bento reveal-group">
+    <div class="card card-terra g-12 reveal" style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;">
+        <p style="font-size:16px;">Lúcia Figuerêdo dedicou mais de trinta anos à educação pública como professora, escritora, poeta e vice-diretora em escolas municipais e estaduais de Salvador e Lauro de Freitas. Casada, mãe de quatro filhos e avó, acredita que a educação continua viva sempre que uma palavra é capaz de tocar um coração.</p>
+      </div>
+      <a href="https://www.instagram.com/luciaalmeida_1/" target="_blank" rel="noopener" class="btn" style="background:var(--marfim);color:var(--terra);"><span>Seguir no Instagram</span><span class="arrow" style="background:var(--dourado);color:#fff;">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="metodologia">
+  <div class="section-title reveal">
+    <span class="badge">Como funciona</span>
+    <h2>A jornada do Método SER</h2>
+  </div>
+  <div class="bento reveal-group">
+    <div class="card card-gold g-5 reveal">
+      <h3 style="font-size:24px;">Sonhar, esperançar, respeitar</h3>
+      <p>O Método SER nasce da própria história de Lúcia: cinco décadas de casamento atravessando sonhos, crises e recomeços. Não são fórmulas prontas — é um caminho testado na vida real.</p>
+      <p>Cada etapa acompanha um momento diferente da relação: o início, a maturidade, e o que sustenta o amor nos dias difíceis.</p>
+      <div style="margin-top:24px;"><a href="#contato" class="btn" style="background:var(--marfim);color:var(--terra);"><span>Falar com Lúcia</span><span class="arrow" style="background:var(--musgo);color:#fff;">→</span></a></div>
+    </div>
+    <div class="card card-dark g-7 reveal">
+      <div class="marquee-wrap">
+        <div class="marquee-track" id="marqueeTrack">
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Sonhar</strong><small>o amor que começa em silêncio</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Esperançar</strong><small>fé e simplicidade nos tempos difíceis</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Respeitar</strong><small>celebrar as diferenças, sustentar o amor</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Fé</strong><small>confiança em Deus a cada escolha</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Família</strong><small>memória, raízes e pertencimento</small></div></div>
+          <!-- duplicado para loop contínuo -->
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Sonhar</strong><small>o amor que começa em silêncio</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Esperançar</strong><small>fé e simplicidade nos tempos difíceis</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Respeitar</strong><small>celebrar as diferenças, sustentar o amor</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Fé</strong><small>confiança em Deus a cada escolha</small></div></div>
+          <div class="m-item"><span class="m-icon">✦</span><div><strong>Família</strong><small>memória, raízes e pertencimento</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="conceito">
+  <div class="bento reveal-group">
+    <div class="card card-photo g-6 reveal" style="min-height:340px;"><img src="assets/livro-professora.jpg" alt="Capa A Professora que Guardava Poemas"></div>
+    <div class="card card-photo g-6 reveal" style="min-height:340px;"><img src="assets/quote-fe.jpeg" alt="Reflexão de fé de Lúcia"></div>
+  </div>
+</section>
+
+<section class="trajetoria" id="trajetoria">
+  <div class="section-title reveal">
+    <span class="badge">Trajetória</span>
+    <h2>De professora a mentora</h2>
+  </div>
+  <div class="trajetoria-grid">
+    <div class="trajetoria-sticky reveal">
+      <img src="assets/bastidor-escrevendo.jpeg" alt="Lúcia escrevendo">
+    </div>
+    <div class="trajetoria-cards reveal-group">
+      <div class="card card-light reveal">
+        <span class="tag" style="background:rgba(94,110,87,0.12);color:var(--musgo);">1ª etapa</span>
+        <h3 style="color:var(--musgo);font-size:20px;">A professora</h3>
+        <p style="color:#5c574d;">Mais de trinta anos em escolas municipais e estaduais de Salvador e Lauro de Freitas — sala de aula como lugar de sonhos, vínculos e humanidade.</p>
+      </div>
+      <div class="card card-terra reveal">
+        <span class="tag">2ª etapa</span>
+        <h3>A escritora</h3>
+        <p>Décadas de memórias viraram poesia em "A Professora que Guardava Poemas" — um testemunho sensível de uma vida dedicada ao ensinar.</p>
+      </div>
+      <div class="card card-dark reveal">
+        <span class="tag">3ª etapa</span>
+        <h3>A mentora</h3>
+        <p>Cinco décadas de casamento deram origem ao Método SER e à mentoria Raízes que Ficam — hoje conduzida pessoalmente por Lúcia para outras famílias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="livros" id="livros">
+  <div class="section-title reveal">
+    <span class="badge">Publicações</span>
+    <h2>Os livros de Lúcia Figuerêdo</h2>
+  </div>
+  <p class="section-sub reveal">Duas obras, uma só voz: a de quem transforma vivência em ensinamento.</p>
+  <div class="bento reveal-group">
+    <div class="card card-light livro-card g-6 reveal">
+      <img src="assets/livro-professora.jpg" alt="A Professora que Guardava Poemas">
+      <span class="livro-tag" style="color:#2C4A6E;">Poesia · Memória · Educação</span>
+      <h3>A Professora que Guardava Poemas</h3>
+      <p>E se uma professora guardasse, durante três décadas, não apenas cadernos e planos de aula, mas também os poemas que nasceram entre encontros, despedidas, descobertas e afetos? Um testemunho sensível de uma vida dedicada ao ensinar.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+        <a class="btn btn-primary" href="https://a.co/d/06eolT88" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="card card-light livro-card g-6 reveal">
+      <img src="assets/livro-bodas.jpg" alt="O Segredo das Bodas de Ouro">
+      <span class="livro-tag" style="color:var(--terra);">Família · Casamento · Método SER</span>
+      <h3>O Segredo das Bodas de Ouro</h3>
+      <p>Para construir uma família bem-sucedida através do Método SER. O livro que deu origem à mentoria Raízes que Ficam — um guia prático nascido de décadas de casamento e experiência real.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+        <a class="btn btn-primary" href="https://a.co/d/0fSbTqYo" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
+        <a class="btn btn-outline" href="https://loja.uiclap.com/titulo/ua192800" target="_blank" rel="noopener"><span>Livro Físico</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="avaliacoes">
+  <div class="section-title reveal">
+    <span class="badge rating-hero">★★★★★ &nbsp;5,0</span>
+    <h2>O que as leitoras dizem na Amazon</h2>
+  </div>
+  <p class="section-sub reveal">100% das avaliações são 5 estrelas — reunimos 9 depoimentos reais entre as 47 avaliações do livro "O Segredo das Bodas de Ouro".</p>
+
+  <div class="bento reveal-group">
+    <div class="card card-light review-card c1 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Amor</h4>
+      <p>"Parabéns Lúcia por compartilhar conosco sua história. Você nos mostra o lado forte da esperança, fé em Deus, amor, resiliência e coragem em mudar."</p>
+      <div class="review-meta"><span>Lilianny Medeiros Pereira</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c2 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Amei</h4>
+      <p>"Um livro encantador do início ao fim. Dona Lúcia consegue nos prender com sua história verdadeira. Em alguns momentos me emocionei muito. Ansiosa pelos próximos livros."</p>
+      <div class="review-meta"><span>Iris</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c3 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Ótimo para presente de casamento</h4>
+      <p>"Comprei de presente para minha filha que casou ano passado! Ela AMOU!!! Parabéns pelo livro!"</p>
+      <div class="review-meta"><span>Ana Paula Moliani</span><span>&nbsp;</span></div>
+    </div>
+    <div class="card card-light review-card c4 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Excelente</h4>
+      <p>"Sobre amor amadurecido no tempo, escrita sensível e inspiradora. Recomendo a famílias e leitores que valorizam histórias reais e profundas."</p>
+      <div class="review-meta"><span>Cristiane</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c1 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Muito bom.</h4>
+      <p>"Excelente leitura!"</p>
+      <div class="review-meta"><span>Jyzana Arantes</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c2 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Livro O Segredo das Bodas de Ouro.</h4>
+      <p>"Excelente livro."</p>
+      <div class="review-meta"><span>Paulo César Santos Borges</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c3 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Satisfeito</h4>
+      <p>"Leitura leve e uma excelente experiência."</p>
+      <div class="review-meta"><span>Adeilton Araújo Santos</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c4 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Vale a pena.</h4>
+      <p>"Excelente reflexão."</p>
+      <div class="review-meta"><span>ENIARA</span><span class="verified">Verificada</span></div>
+    </div>
+    <div class="card card-light review-card c1 g-4 reveal">
+      <div class="stars">★★★★★</div>
+      <h4>Reflexão</h4>
+      <p>"Excelente leitura para uma reflexão sobre a vida."</p>
+      <div class="review-meta"><span>Carolina Pereira de Jesus Frazão</span><span class="verified">Verificada</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <a href="https://www.amazon.com.br/product-reviews/B0GDMZNDR7/" target="_blank" rel="noopener" class="btn btn-outline"><span>Ver todas as avaliações na Amazon</span><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="mentoria" id="mentoria">
+  <div class="section-title reveal">
+    <span class="badge">Mentoria</span>
+    <h2>Raízes que Ficam — a jornada do Método SER</h2>
+  </div>
+  <div class="bento reveal-group">
+    <div class="card card-dark g-7 reveal">
+      <p style="opacity:.95;font-size:16px;">Nascida do livro "O Segredo das Bodas de Ouro", a mentoria Raízes que Ficam acompanha casais e famílias que querem construir relações duradouras através do Método SER — com a mesma serenidade e experiência real que marcam a escrita de Lúcia.</p>
+      <ul>
+        <li>Baseada em décadas de vivência real, não em fórmulas prontas.</li>
+        <li>Voltada para famílias que buscam permanência, não apenas motivação passageira.</li>
+        <li>Conduzida pessoalmente por Lúcia, professora e mentora.</li>
+      </ul>
+      <div style="margin-top:26px;"><a href="#contato" class="btn btn-primary"><span>Falar com Lúcia</span><span class="arrow">→</span></a></div>
+    </div>
+    <div class="card card-photo mentoria-logo g-5 reveal">
+      <img src="assets/logo-raizes-que-ficam.jpeg" alt="Selo da mentoria Raízes que Ficam">
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="polaroid-wrap reveal">
+    <div class="polaroid polaroid-a"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia"></div>
+    <div class="polaroid polaroid-b"><img src="assets/quote-fe.jpeg" alt="Reflexão de Lúcia"></div>
+  </div>
+  <h2 class="serif reveal">Faça parte da comunidade<br>leitora de Lúcia Figuerêdo</h2>
+  <a href="https://www.instagram.com/luciaalmeida_1/" target="_blank" rel="noopener" class="btn btn-primary reveal" style="display:inline-flex;"><span>Seguir no Instagram</span><span class="arrow">→</span></a>
+</section>
+
+<section class="social" id="instagram">
+  <div class="section-title reveal">
+    <span class="badge">Bastidores</span>
+    <h2>Acompanhe no Instagram</h2>
+  </div>
+  <p class="section-sub reveal">Poesia, memórias de sala de aula e bastidores da mentoria Raízes que Ficam — todo dia por lá.</p>
+  <div class="bento insta-grid reveal-group">
+    <div class="card card-photo insta-tile g-4 reveal" style="grid-row:span 2;"><img src="assets/hero-livros.png" alt="Lúcia com os livros"></div>
+    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/bastidor-escrevendo.jpeg" alt="Lúcia escrevendo — bastidores"></div>
+    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/quote-fe.jpeg" alt="Post sobre fé no Instagram de Lúcia"></div>
+    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia"></div>
+    <div class="card insta-tile i3 g-4 reveal"></div>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="https://www.instagram.com/luciaalmeida_1/" target="_blank" rel="noopener" class="btn btn-outline"><span>@luciaalmeida_1</span><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer id="contato">
+  <svg class="footer-motif" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8C6A52" stroke-width="1.5">
+    <path d="M60 55 C58 40 58 25 60 5" />
+    <path d="M60 40 C50 34 42 30 34 22" /><path d="M60 40 C70 34 78 30 86 22" />
+    <path d="M60 28 C52 23 46 20 40 14" /><path d="M60 28 C68 23 74 20 80 14" />
+    <path d="M60 16 C55 12 51 10 46 6" /><path d="M60 16 C65 12 69 10 74 6" />
+  </svg>
+  <h2 class="serif reveal">Vamos conversar?</h2>
+  <p class="reveal">Para parcerias, entrevistas, clubes de leitura ou dúvidas sobre a mentoria Raízes que Ficam, envie uma mensagem.</p>
+  <a href="mailto:contato@luciafigueredo.com.br" class="btn btn-primary reveal" style="display:inline-flex;"><span>contato@luciafigueredo.com.br</span><span class="arrow">→</span></a>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/luciaalmeida_1/" target="_blank" rel="noopener" title="Instagram">IG</a>
+    <a href="#" title="LinkedIn (em construção)">in</a>
+  </div>
+  <div class="foot-copy">© 2026 Lúcia Figuerêdo. Protótipo de site — versão 3 (bento + animações).</div>
+</footer>
+
+<script>
+  // stagger reveal delays within each group, then observe
+  document.querySelectorAll('.reveal-group').forEach(function(group){
+    var items = group.querySelectorAll('.reveal');
+    items.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i,6) * 0.09) + 's'; });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // hero tile crossfade label
+  var labels = ["Poesia","Memória","Fé","Família","Educação"];
+  var li = 0;
+  var labelEl = document.getElementById('heroLabel');
+  if(labelEl){
+    setInterval(function(){
+      labelEl.classList.remove('show');
+      setTimeout(function(){
+        li = (li + 1) % labels.length;
+        labelEl.textContent = labels[li];
+        labelEl.classList.add('show');
+      }, 400);
+    }, 3200);
+  }
+
+  // pause marquee when off-screen (performance)
+  var marquee = document.getElementById('marqueeTrack');
+  if(marquee){
+    var mio = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        marquee.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    }, {threshold:0});
+    mio.observe(marquee);
+  }
+</script>
+
+</body>
+</html>

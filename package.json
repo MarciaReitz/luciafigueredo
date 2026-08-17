@@ -1,0 +1,24 @@
+{
+  "name": "lucia-figueredo-website",
+  "version": "1.0.0",
+  "description": "Website de Lúcia Figuerêdo - Autora & Mentora. Histórias que ensinam, tocam e permanecem.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "open prototipo/index.html",
+    "build": "echo 'Static site - no build needed'",
+    "start": "open prototipo/index.html"
+  },
+  "keywords": [
+    "lucia-figueredo",
+    "autora",
+    "poesia",
+    "mentoria",
+    "raizes-que-ficam"
+  ],
+  "author": "Lúcia Figuerêdo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/lucia-figueredo-website.git"
+  }
+}
