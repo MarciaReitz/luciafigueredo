@@ -116,7 +116,7 @@
 
   /* ---------- livros ---------- */
   .livro-card{display:flex;flex-direction:column;}
-  .livro-card img{border-radius:18px;height:260px;object-position:top;margin-bottom:20px;}
+  .livro-card img{border-radius:18px;width:210px;height:336px;object-fit:cover;object-position:center;align-self:center;margin-bottom:20px;}
   .livro-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,0.5);}
   .livro-card h3{font-size:22px;color:var(--musgo);}
   .livro-card p{color:#5c574d;font-size:15px;margin-bottom:22px;flex:1;}
@@ -182,6 +182,18 @@
     .trajetoria-sticky{position:static;margin-bottom:24px;}
     .polaroid-wrap{transform:scale(.85);}
   }
+  /* ---------- pop-up lançamento ---------- */
+  .lanc-overlay{position:fixed;inset:0;z-index:1000;background:rgba(20,16,12,0.82);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease);}
+  .lanc-overlay.open{opacity:1;visibility:visible;}
+  .lanc-modal{position:relative;max-width:min(90vw,440px);max-height:92vh;transform:translateY(14px) scale(.98);transition:transform .35s var(--ease);}
+  .lanc-overlay.open .lanc-modal{transform:none;}
+  .lanc-img{display:block;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
+  .lanc-img img{width:100%;height:auto;display:block;}
+  .lanc-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;background:#fff;color:#2E2B26;border:none;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .18s var(--ease);}
+  .lanc-close:hover{transform:scale(1.08);}
+  .lanc-cta{display:block;text-align:center;margin-top:14px;background:var(--dourado-vivo);color:#fff;font-weight:700;padding:13px 20px;border-radius:999px;font-size:15px;box-shadow:0 12px 30px -10px rgba(212,168,62,.7);transition:transform .18s var(--ease);}
+  .lanc-cta:hover{transform:scale(1.03);}
+  @media(max-width:520px){.lanc-close{top:-8px;right:-8px;width:36px;height:36px;}}
 </style>
 </head>
 <body>
@@ -332,7 +344,8 @@
       <h3>A Professora que Guardava Poemas</h3>
       <p>E se uma professora guardasse, durante três décadas, não apenas cadernos e planos de aula, mas também os poemas que nasceram entre encontros, despedidas, descobertas e afetos? Um testemunho sensível de uma vida dedicada ao ensinar.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
-        <a class="btn btn-primary" href="https://a.co/d/06eolT88" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
+        <a class="btn btn-primary" href="https://a.co/d/0fSbTqYo" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
+        <a class="btn btn-outline" href="https://loja.uiclap.com/titulo/ua192800" target="_blank" rel="noopener"><span>Livro Físico</span><span class="arrow">→</span></a>
       </div>
     </div>
     <div class="card card-light livro-card g-6 reveal">
@@ -341,8 +354,7 @@
       <h3>O Segredo das Bodas de Ouro</h3>
       <p>Para construir uma família bem-sucedida através do Método SER. O livro que deu origem à mentoria Raízes que Ficam — um guia prático nascido de décadas de casamento e experiência real.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
-        <a class="btn btn-primary" href="https://a.co/d/0fSbTqYo" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
-        <a class="btn btn-outline" href="https://loja.uiclap.com/titulo/ua192800" target="_blank" rel="noopener"><span>Livro Físico</span><span class="arrow">→</span></a>
+        <a class="btn btn-primary" href="https://a.co/d/06eolT88" target="_blank" rel="noopener"><span>E-book</span><span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -523,6 +535,29 @@
     }, {threshold:0});
     mio.observe(marquee);
   }
+</script>
+
+<div class="lanc-overlay" id="lancOverlay" role="dialog" aria-modal="true" aria-label="Lançamento do livro A Professora que Guardava Poemas">
+  <div class="lanc-modal">
+    <button class="lanc-close" id="lancClose" aria-label="Fechar">×</button>
+    <a class="lanc-img" href="https://a.co/d/09rjPB0o" target="_blank" rel="noopener">
+      <img src="assets/lancamento-professora.jpg" alt="Lançamento: A Professora que Guardava Poemas — 18/08 às 07:00, exclusivo na Amazon" onerror="var o=document.getElementById('lancOverlay'); if(o) o.remove();">
+    </a>
+    <a class="lanc-cta" href="https://a.co/d/09rjPB0o" target="_blank" rel="noopener">Garantir na Amazon →</a>
+  </div>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById("lancOverlay");
+  if(!ov) return;
+  var cl=document.getElementById("lancClose");
+  function close(){ov.classList.remove("open");document.body.style.overflow="";}
+  function open(){if(!document.getElementById("lancOverlay"))return;ov.classList.add("open");document.body.style.overflow="hidden";}
+  cl.addEventListener("click",close);
+  ov.addEventListener("click",function(e){if(e.target===ov)close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+  window.addEventListener("load",function(){setTimeout(open,600);});
+})();
 </script>
 
 </body>
