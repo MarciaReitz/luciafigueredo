@@ -1,6 +1,4 @@
 {
-  "projectName": "luciafigueredo",
   "buildCommand": "echo 'Static site'",
-  "outputDirectory": "prototipo",
-  "public": true
+  "outputDirectory": "prototipo"
 }
