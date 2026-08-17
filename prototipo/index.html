@@ -63,7 +63,7 @@
   .card-rose{background:var(--rose);color:#4a2f2b;}
   .card-light{background:#fff;color:var(--texto);box-shadow:0 10px 30px -18px rgba(46,43,38,0.25);}
   .card-photo{padding:0;}
-  .card-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .card-photo img{width:100%;height:100%;object-fit:cover;object-position:center;}
   .card .eyebrow{font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px;margin-bottom:12px;opacity:.85;}
   .card h2, .card h3{margin-bottom:14px;line-height:1.2;}
   .card p{opacity:.92;font-size:15.5px;}
@@ -86,10 +86,10 @@
   .logo-lockup svg{width:26px;height:26px;}
   .hero h1{font-size:44px;color:var(--musgo);line-height:1.15;margin:14px 0 18px;}
   .hero .lede{font-size:18px;color:#4a453d;margin-bottom:30px;max-width:480px;}
-  .hero-collage{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:500px;}
+  .hero-collage{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:520px;}
   .hero-collage .tile{border-radius:22px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(46,43,38,0.3);position:relative;}
   .hero-collage .tile-tall{grid-row:1/3;}
-  .hero-collage .tile img{width:100%;height:100%;object-fit:cover;}
+  .hero-collage .tile img{width:100%;height:100%;object-fit:cover;object-position:center;}
   .tile-overlay{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top, rgba(46,43,38,0.75), transparent);}
   .tile-overlay span{color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:15px;opacity:0;transition:opacity .4s var(--ease);}
   .tile-overlay span.show{opacity:1;}
@@ -109,8 +109,8 @@
 
   /* ---------- trajetória (sticky) ---------- */
   .trajetoria-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;max-width:1180px;margin:0 auto;}
-  .trajetoria-sticky{position:sticky;top:100px;align-self:start;border-radius:24px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(46,43,38,0.3);}
-  .trajetoria-sticky img{width:100%;}
+  .trajetoria-sticky{position:sticky;top:100px;align-self:start;border-radius:24px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(46,43,38,0.3);height:400px;}
+  .trajetoria-sticky img{width:100%;height:100%;object-fit:cover;object-position:center;}
   .trajetoria-cards .card{margin-bottom:22px;}
   .trajetoria-cards .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,0.2);}
 
@@ -144,7 +144,7 @@
   .cta-final{text-align:center;}
   .polaroid-wrap{position:relative;height:260px;max-width:340px;margin:0 auto 20px;}
   .polaroid{position:absolute;background:#fff;padding:12px 12px 40px;border-radius:6px;box-shadow:0 20px 40px -14px rgba(46,43,38,0.35);width:200px;}
-  .polaroid img{border-radius:2px;width:100%;height:200px;object-fit:cover;}
+  .polaroid img{border-radius:2px;width:100%;height:200px;object-fit:cover;object-position:center;}
   .polaroid-a{left:10px;top:10px;transform:rotate(-7deg);z-index:1;}
   .polaroid-b{right:10px;top:40px;transform:rotate(6deg);z-index:2;}
   .cta-final h2{font-size:30px;color:var(--musgo);margin-bottom:22px;}
@@ -152,6 +152,7 @@
   /* ---------- instagram ---------- */
   .insta-grid{grid-template-rows:repeat(2,140px);}
   .insta-tile{border-radius:20px;}
+  .insta-tile img{width:100%;height:100%;object-fit:cover;object-position:center;}
   .i3{background:var(--rose);}
 
   /* ---------- footer ---------- */
@@ -297,8 +298,8 @@
 
 <section class="conceito">
   <div class="bento reveal-group">
-    <div class="card card-photo g-6 reveal" style="min-height:340px;"><img src="assets/livro-professora.jpg" alt="Capa A Professora que Guardava Poemas"></div>
     <div class="card card-photo g-6 reveal" style="min-height:340px;"><img src="assets/quote-fe.jpeg" alt="Reflexão de fé de Lúcia"></div>
+    <div class="card card-photo g-6 reveal" style="min-height:340px;"><img src="assets-backup/whatsapp-originals/2026-08-16_evening.jpeg" alt="Lúcia em momento reflexivo"></div>
   </div>
 </section>
 
@@ -452,8 +453,8 @@
 
 <section class="cta-final">
   <div class="polaroid-wrap reveal">
-    <div class="polaroid polaroid-a"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia"></div>
-    <div class="polaroid polaroid-b"><img src="assets/quote-fe.jpeg" alt="Reflexão de Lúcia"></div>
+    <div class="polaroid polaroid-a"><img src="assets-backup/whatsapp-originals/2026-08-12_morning_v2.jpeg" alt="Lúcia em momento criativo"></div>
+    <div class="polaroid polaroid-b"><img src="assets/hero-livros.png" alt="Lúcia com seus livros"></div>
   </div>
   <h2 class="serif reveal">Faça parte da comunidade<br>leitora de Lúcia Figuerêdo</h2>
   <a href="https://www.instagram.com/luciaalmeida_1/" target="_blank" rel="noopener" class="btn btn-primary reveal" style="display:inline-flex;"><span>Seguir no Instagram</span><span class="arrow">→</span></a>
@@ -466,10 +467,10 @@
   </div>
   <p class="section-sub reveal">Poesia, memórias de sala de aula e bastidores da mentoria Raízes que Ficam — todo dia por lá.</p>
   <div class="bento insta-grid reveal-group">
-    <div class="card card-photo insta-tile g-4 reveal" style="grid-row:span 2;"><img src="assets/hero-livros.png" alt="Lúcia com os livros"></div>
-    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/bastidor-escrevendo.jpeg" alt="Lúcia escrevendo — bastidores"></div>
+    <div class="card card-photo insta-tile g-4 reveal" style="grid-row:span 2;"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia"></div>
     <div class="card card-photo insta-tile g-4 reveal"><img src="assets/quote-fe.jpeg" alt="Post sobre fé no Instagram de Lúcia"></div>
-    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/retrato-real.jpeg" alt="Retrato de Lúcia"></div>
+    <div class="card card-photo insta-tile g-4 reveal"><img src="assets-backup/whatsapp-originals/2026-08-16_morning.jpeg" alt="Lúcia em momento de contemplação"></div>
+    <div class="card card-photo insta-tile g-4 reveal"><img src="assets/livro-professora.jpg" alt="Capa do livro A Professora que Guardava Poemas"></div>
     <div class="card insta-tile i3 g-4 reveal"></div>
   </div>
   <div style="text-align:center;margin-top:36px;">
