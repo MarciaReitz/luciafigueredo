@@ -182,6 +182,18 @@
     .trajetoria-sticky{position:static;margin-bottom:24px;}
     .polaroid-wrap{transform:scale(.85);}
   }
+  /* ---------- pop-up lançamento ---------- */
+  .lanc-overlay{position:fixed;inset:0;z-index:1000;background:rgba(20,16,12,0.82);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease);}
+  .lanc-overlay.open{opacity:1;visibility:visible;}
+  .lanc-modal{position:relative;max-width:min(90vw,440px);max-height:92vh;transform:translateY(14px) scale(.98);transition:transform .35s var(--ease);}
+  .lanc-overlay.open .lanc-modal{transform:none;}
+  .lanc-img{display:block;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
+  .lanc-img img{width:100%;height:auto;display:block;}
+  .lanc-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;background:#fff;color:#2E2B26;border:none;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .18s var(--ease);}
+  .lanc-close:hover{transform:scale(1.08);}
+  .lanc-cta{display:block;text-align:center;margin-top:14px;background:var(--dourado-vivo);color:#fff;font-weight:700;padding:13px 20px;border-radius:999px;font-size:15px;box-shadow:0 12px 30px -10px rgba(212,168,62,.7);transition:transform .18s var(--ease);}
+  .lanc-cta:hover{transform:scale(1.03);}
+  @media(max-width:520px){.lanc-close{top:-8px;right:-8px;width:36px;height:36px;}}
 </style>
 </head>
 <body>
@@ -523,6 +535,29 @@
     }, {threshold:0});
     mio.observe(marquee);
   }
+</script>
+
+<div class="lanc-overlay" id="lancOverlay" role="dialog" aria-modal="true" aria-label="Lançamento do livro A Professora que Guardava Poemas">
+  <div class="lanc-modal">
+    <button class="lanc-close" id="lancClose" aria-label="Fechar">×</button>
+    <a class="lanc-img" href="https://a.co/d/09rjPB0o" target="_blank" rel="noopener">
+      <img src="assets/lancamento-professora.jpg" alt="Lançamento: A Professora que Guardava Poemas — 18/08 às 07:00, exclusivo na Amazon" onerror="var o=document.getElementById('lancOverlay'); if(o) o.remove();">
+    </a>
+    <a class="lanc-cta" href="https://a.co/d/09rjPB0o" target="_blank" rel="noopener">Garantir na Amazon →</a>
+  </div>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById("lancOverlay");
+  if(!ov) return;
+  var cl=document.getElementById("lancClose");
+  function close(){ov.classList.remove("open");document.body.style.overflow="";}
+  function open(){if(!document.getElementById("lancOverlay"))return;ov.classList.add("open");document.body.style.overflow="hidden";}
+  cl.addEventListener("click",close);
+  ov.addEventListener("click",function(e){if(e.target===ov)close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+  window.addEventListener("load",function(){setTimeout(open,600);});
+})();
 </script>
 
 </body>
